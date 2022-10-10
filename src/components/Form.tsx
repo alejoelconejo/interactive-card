@@ -16,6 +16,7 @@ const FormCredit = ({
             placeholder='e.g. Jane Appleseed'
             name='name'
             type={'text'}
+            maxLength={25}
             value={creditForm.name}
             onChange={handleChange}
             required
@@ -28,8 +29,9 @@ const FormCredit = ({
             name='number'
             type={'text'}
             inputMode='numeric'
-            value={creditForm.number}
             pattern='[A-Za-z0-9]{4}\s[A-Za-z0-9]{4}\s[A-Za-z0-9]{4}\s[A-Za-z0-9]{4}'
+            maxLength={19}
+            value={creditForm.number}
             onChange={handleChange}
             required
           />
@@ -42,9 +44,11 @@ const FormCredit = ({
                 className='input-month'
                 name='month'
                 placeholder='MM'
-                type={'number'}
-                min={'1'}
+                type={'text'}
+                min={'01'}
                 max={'12'}
+                minLength={2}
+                maxLength={2}
                 value={creditForm.month}
                 onChange={handleChange}
                 required
@@ -53,7 +57,9 @@ const FormCredit = ({
                 className='input-date'
                 name='year'
                 placeholder='YY'
-                type={'number'}
+                type={'text'}
+                minLength={2}
+                maxLength={2}
                 value={creditForm.year}
                 onChange={handleChange}
                 required
@@ -68,6 +74,7 @@ const FormCredit = ({
               placeholder='e.g. 123'
               type={'text'}
               inputMode='numeric'
+              maxLength={3}
               value={creditForm.cvc}
               onChange={handleChange}
               required

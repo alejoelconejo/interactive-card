@@ -94,7 +94,7 @@ input::placeholder {
 }
 
 input:invalid {
-  border: solid red 1px;
+  border: 1px solid #e3676a;
 }
 
 .form-horizontal {
