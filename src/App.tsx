@@ -1,64 +1,30 @@
+import { useState } from 'react'
+import { creditCard } from './types'
+
+import FormCredit from './components/Form'
+import Cards from './components/Cards'
+
 const App = () => {
+  const [creditForm, setCreditForm] = useState<creditCard>({
+    name: '',
+    number: '',
+    month: 0,
+    year: 0,
+    cvc: 0,
+  })
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+    setCreditForm((prevCreditForm) => {
+      return { ...prevCreditForm, [name]: value }
+    })
+  }
+
+  console.log(creditForm)
   return (
     <main>
-      <section className='cards-section'>
-        <article className='card card-front'></article>
-        <article className='card card-back'></article>
-      </section>
-      <section className='form-section'>
-        <form>
-          <label>
-            Cardholder name
-            <input
-              placeholder='e.g. Jane Appleseed'
-              name='name'
-              type={'text'}
-            />
-          </label>
-          <label>
-            Card number
-            <input
-              placeholder='e.g. 1234 5678 9123 0000'
-              name='card-number'
-              type={'text'}
-              inputMode='numeric'
-            />
-          </label>
-          <div className='form-horizontal'>
-            <label>
-              Exp. Date (MM/YY)
-              <div className='inputs-date'>
-                <input
-                  className='input-date'
-                  name='exp-month'
-                  placeholder='MM'
-                  type={'text'}
-                  inputMode='numeric'
-                />
-                <input
-                  className='input-date'
-                  name='exp-year'
-                  placeholder='YY'
-                  type={'text'}
-                  inputMode='numeric'
-                />
-              </div>
-            </label>
-            <label>
-              CVC
-              <input
-                className='input-cvc'
-                name='cvc'
-                placeholder='e.g. 123'
-                type={'text'}
-                inputMode='numeric'
-              />
-            </label>
-          </div>
-
-          <button>Confirm</button>
-        </form>
-      </section>
+      <Cards creditForm={creditForm} />
+      <FormCredit creditForm={creditForm} handleChange={handleChange} />
     </main>
   )
 }

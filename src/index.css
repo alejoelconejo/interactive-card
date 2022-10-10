@@ -46,6 +46,7 @@ main {
   flex: 1;
   height: 100%;
   align-items: center;
+  justify-content: center;
 }
 
 form {
@@ -92,6 +93,10 @@ input::placeholder {
   color: #8a8989;
 }
 
+input:invalid {
+  border: solid red 1px;
+}
+
 .form-horizontal {
   display: flex;
   gap: 1rem;
@@ -111,9 +116,6 @@ form button {
 
 .cards-section {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
   flex: 1;
   height: 100%;
   position: relative;
@@ -121,15 +123,47 @@ form button {
 }
 
 .card {
-  height: 150px;
+  height: 200px;
+  width: 365px;
   background-repeat: no-repeat;
   background-size: contain;
+  color: white;
+  text-transform: uppercase;
+  position: absolute;
 }
 
 .card-front {
   background-image: url('./assets/bg-card-front.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  left: 220px;
+  top: 160px;
+}
+
+.card-front header {
+  margin-bottom: 2rem;
+}
+
+.card-front p {
+  font-size: 1.8rem;
+}
+
+.card-front footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-back {
   background-image: url('./assets/bg-card-back.png');
+  left: 295px;
+  bottom: 160px;
+}
+
+.card-back p {
+  position: absolute;
+  top: 90px;
+  right: 50px;
+  font-size: 1.1rem;
 }
