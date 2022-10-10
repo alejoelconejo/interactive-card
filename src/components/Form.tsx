@@ -1,15 +1,18 @@
+import { ButtonHTMLAttributes } from 'react'
 import { creditCard } from '../types'
 
 const FormCredit = ({
   creditForm,
   handleChange,
+  handleSubmit,
 }: {
   creditForm: creditCard
   handleChange: React.ChangeEventHandler<HTMLInputElement>
+  handleSubmit: React.FormEventHandler<HTMLFormElement>
 }) => {
   return (
     <section className='form-section'>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           Cardholder name
           <input
@@ -74,6 +77,7 @@ const FormCredit = ({
               placeholder='e.g. 123'
               type={'text'}
               inputMode='numeric'
+              minLength={3}
               maxLength={3}
               value={creditForm.cvc}
               onChange={handleChange}

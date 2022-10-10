@@ -20,11 +20,19 @@ const App = () => {
     })
   }
 
-  console.log(creditForm)
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    console.log('holuuu, desde el submit')
+  }
+
   return (
     <main>
       <Cards creditForm={creditForm} />
-      <FormCredit creditForm={creditForm} handleChange={handleChange} />
+      <FormCredit
+        creditForm={creditForm}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </main>
   )
 }
