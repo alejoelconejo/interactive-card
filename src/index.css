@@ -99,6 +99,7 @@ input:invalid {
 
 .form-horizontal {
   display: flex;
+  align-items: end;
   gap: 1rem;
 }
 
@@ -166,4 +167,17 @@ form button {
   top: 90px;
   right: 50px;
   font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    background-image: none;
+  }
+
+  .cards-section {
+    background-image: url('./assets/bg-main-desktop.png');
+    background-repeat: no-repeat;
+    background-size: 100% 80%;
+  }
 }
