@@ -41,7 +41,7 @@ main {
   min-width: 80vw;
 }
 
-.form-section {
+.hero-section {
   display: flex;
   flex: 1;
   height: 100%;
@@ -49,11 +49,30 @@ main {
   justify-content: center;
 }
 
-form {
+.container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 400px;
+}
+
+.submit-section {
+  align-items: center;
+}
+
+.submit-section h2 {
+  text-transform: uppercase;
+  font-size: 2.3rem;
+}
+
+.submit-section p {
+  color: #8a8989;
+  font-size: 1.4rem;
+  letter-spacing: 1.1px;
+}
+
+.submit-section button {
+  width: 90%;
 }
 
 label {
@@ -103,7 +122,7 @@ input:invalid {
   gap: 1rem;
 }
 
-form button {
+button {
   padding: 1rem;
   background-color: hsl(278, 68%, 11%);
   border: none;
@@ -139,7 +158,7 @@ form button {
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  left: 220px;
+  left: 30%;
   top: 160px;
 }
 
@@ -158,7 +177,7 @@ form button {
 
 .card-back {
   background-image: url('./assets/bg-card-back.png');
-  left: 295px;
+  left: 39%;
   bottom: 160px;
 }
 
@@ -167,6 +186,11 @@ form button {
   top: 90px;
   right: 50px;
   font-size: 1.1rem;
+}
+
+.logo-completed {
+  height: 80px;
+  width: 80px;
 }
 
 @media (max-width: 900px) {

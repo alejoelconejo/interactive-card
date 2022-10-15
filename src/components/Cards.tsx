@@ -4,7 +4,7 @@ import { creditCard } from '../types'
 const Cards = ({ creditForm }: { creditForm: creditCard }) => {
   return (
     <section className='cards-section'>
-      <picture className='card card-front'>
+      <div className='card card-front'>
         <header>
           <img src={CardLogo} />
         </header>
@@ -15,10 +15,10 @@ const Cards = ({ creditForm }: { creditForm: creditCard }) => {
             {creditForm.month}/{creditForm.year}
           </span>
         </footer>
-      </picture>
-      <picture className='card card-back'>
+      </div>
+      <div className='card card-back'>
         <p>{creditForm.cvc}</p>
-      </picture>
+      </div>
     </section>
   )
 }

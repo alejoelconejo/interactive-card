@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { creditCard } from './types'
 
-import FormCredit from './components/Form'
+import FormCredit from './components/FormCredit'
 import Cards from './components/Cards'
+import Submitted from './components/Submitted'
 
 const App = () => {
   const [creditForm, setCreditForm] = useState<creditCard>({
@@ -13,6 +14,8 @@ const App = () => {
     cvc: 0,
   })
 
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setCreditForm((prevCreditForm) => {
@@ -20,19 +23,28 @@ const App = () => {
     })
   }
 
+  const toggleSubmitted: VoidFunction = () =>
+    setIsSubmitted((isSubmitted) => !isSubmitted)
+
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log('holuuu, desde el submit')
+    toggleSubmitted()
   }
 
   return (
     <main>
       <Cards creditForm={creditForm} />
-      <FormCredit
-        creditForm={creditForm}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+      <section className='hero-section'>
+        {isSubmitted ? (
+          <Submitted toggleSubmitted={toggleSubmitted} />
+        ) : (
+          <FormCredit
+            creditForm={creditForm}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        )}
+      </section>
     </main>
   )
 }
