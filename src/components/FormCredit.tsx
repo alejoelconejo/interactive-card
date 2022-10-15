@@ -2,11 +2,17 @@ import { creditCard } from '../types'
 
 interface Props {
   creditForm: creditCard
+  isLoading: boolean
   handleChange: React.ChangeEventHandler<HTMLInputElement>
   handleSubmit: React.FormEventHandler<HTMLFormElement>
 }
 
-const FormCredit = ({ creditForm, handleChange, handleSubmit }: Props) => {
+const FormCredit = ({
+  creditForm,
+  isLoading,
+  handleChange,
+  handleSubmit,
+}: Props) => {
   return (
     <form className='container' onSubmit={handleSubmit}>
       <label>
@@ -81,8 +87,7 @@ const FormCredit = ({ creditForm, handleChange, handleSubmit }: Props) => {
           />
         </label>
       </div>
-
-      <button>Confirm</button>
+      <button>{isLoading ? <div className='spinner'></div> : 'Confirm'}</button>
     </form>
   )
 }

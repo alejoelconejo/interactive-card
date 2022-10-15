@@ -16,6 +16,8 @@ const App = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setCreditForm((prevCreditForm) => {
@@ -23,12 +25,23 @@ const App = () => {
     })
   }
 
-  const toggleSubmitted: VoidFunction = () =>
+  const setSubmitted: VoidFunction = () =>
     setIsSubmitted((isSubmitted) => !isSubmitted)
+
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+
+  const setLoading: Function = async () => {
+    setIsLoading(true)
+    console.log('en el setloadinggg')
+    await sleep(2000).then(() => console.log('holu'))
+  }
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
-    toggleSubmitted()
+    setLoading().then(() => {
+      setSubmitted()
+      setIsLoading(false)
+    })
   }
 
   return (
@@ -36,10 +49,11 @@ const App = () => {
       <Cards creditForm={creditForm} />
       <section className='hero-section'>
         {isSubmitted ? (
-          <Submitted toggleSubmitted={toggleSubmitted} />
+          <Submitted setSubmitted={setSubmitted} />
         ) : (
           <FormCredit
             creditForm={creditForm}
+            isLoading={isLoading}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
           />
